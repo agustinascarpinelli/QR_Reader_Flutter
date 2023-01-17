@@ -10,13 +10,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         title: Text('History'),
         actions: [
           IconButton(
-            onPressed:(){},
+            onPressed:(){
+              final scansProvider=Provider.of<ScansProvider>(context,listen: false);
+               scansProvider.deleteAllScans();
+              
+            },
              icon: Icon (Icons.delete_forever))
         ],
       ),
@@ -35,25 +40,22 @@ class _homeBody extends StatelessWidget {
     final uiProvider=Provider.of<UiProvider>(context);
     final currentIndex=uiProvider.selectedMenuOpt;
 
-    final tempScan=new ScanModel(value: 'http://googliie.com');
     
-    //DBProvider.db.initDB();
- DBProvider.db.newScan(tempScan);
-    
-   //DBProvider.db.getScanById(1).then((scan)=>print(scan?.value));
-    
-
+final scansProvider=Provider.of<ScansProvider>(context,listen: false);
 
     switch(currentIndex){
       case 0:
+      scansProvider.uploadScansByType('geo');
       return MapsHistoryScreen();
+     
       case 1:
+        scansProvider.uploadScansByType('http');
       return DirectionsScreen();
 
 
       
       default:
-      return MapsHistoryScreen();
+      return MapsScreen();
     }
   }
 }
