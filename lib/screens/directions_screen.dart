@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:qr_reader/widgets/widgets.dart';
 
-import '../providers/scans_provider.dart';
 
 class DirectionsScreen extends StatelessWidget {
    
@@ -11,6 +9,6 @@ class DirectionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
       
-     return ScansList(type: 'http');
+     return const ScansList(type: 'http');
   }
 }

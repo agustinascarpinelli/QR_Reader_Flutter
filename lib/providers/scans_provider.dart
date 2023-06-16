@@ -1,8 +1,3 @@
-
-
-
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:qr_reader/providers/db_provider.dart';
 
@@ -34,7 +29,7 @@ uploadScans()async{
 
 uploadScansByType(String type)async{
   isLoading=true;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final scans=await DBProvider.db.getScansByType(type);
     this.scans=[...scans!];
    isLoading=false;

@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-         ChangeNotifierProvider(create: (_)=>new UiProvider()),
-         ChangeNotifierProvider(create: (_)=>new ScansProvider())
+         ChangeNotifierProvider(create: (_)=>UiProvider()),
+         ChangeNotifierProvider(create: (_)=>ScansProvider())
      
 
       ],
@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
         title:'Qr Scanner',
         initialRoute: 'home',
         routes: {
-          'home':(_)=>HomeScreen(),
-           'maps':(_)=>MapsScreen(),
+          'home':(_)=>const HomeScreen(),
+           'maps':(_)=>const MapsScreen(),
           // 'maps-history':(_)=>MapsHistoryScreen()
         },
        theme: ThemeData.dark().copyWith(
-        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.deepPurple),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: Colors.deepPurple)
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: Colors.deepPurple),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: Colors.deepPurple)
        )
         
       ),

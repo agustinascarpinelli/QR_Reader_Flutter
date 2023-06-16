@@ -28,7 +28,7 @@ class ScansList extends StatelessWidget {
           background: Container(
             color: Colors.deepOrange,
           ),
-          onDismissed: (DismissDirection){
+          onDismissed: (dissmissDirection){
           final scansProvider=Provider.of<ScansProvider>(context,listen: false);
           scansProvider.deleteScanByid(scans[i].id!);
           },
@@ -67,6 +67,7 @@ class ScansList extends StatelessWidget {
      :
    const Center(
       child: CircularProgressIndicator(
+        color: Colors.deepPurple,
 
       ),
     );

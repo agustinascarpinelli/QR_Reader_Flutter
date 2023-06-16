@@ -24,13 +24,29 @@ class ScanModel {
     String? type;
     String value;
 
-    LatLng getLatLng(){
-      final latLng=value.substring(4).split(',');
-      final lat=double.parse(latLng[0]);
-      final lng=double.parse(latLng[1]);
+LatLng getLatLng() {
+  if (!value.startsWith('geo:')) {
+    return LatLng(0, 0);
+  }
 
-      return LatLng(lat, lng);
-    }
+  final coordinates = value.substring(4).split('?')[0];
+  final latLng = coordinates.split(',');
+
+  if (latLng.length != 2) {
+    return LatLng(0, 0);
+  }
+
+  final lat = double.tryParse(latLng[0]);
+  final lng = double.tryParse(latLng[1]);
+
+  if (lat == null || lng == null) {
+    return LatLng(0, 0);
+  }
+
+  return LatLng(lat, lng);
+}
+
+
 
     factory ScanModel.fromJson(Map<String, dynamic> json) => ScanModel(
         id: json["id"],

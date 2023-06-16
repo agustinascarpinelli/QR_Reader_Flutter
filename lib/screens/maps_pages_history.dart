@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:qr_reader/providers/providers.dart';
 import 'package:qr_reader/widgets/widgets.dart';
 
 class MapsHistoryScreen extends StatelessWidget {
@@ -12,6 +10,6 @@ class MapsHistoryScreen extends StatelessWidget {
     
 
    
-  return ScansList(type:'geo');
+  return const ScansList(type:'geo');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qr_reader/providers/db_provider.dart';
 import 'package:qr_reader/providers/providers.dart';
 import 'package:qr_reader/screens/screens.dart';
 import 'package:qr_reader/widgets/widgets.dart';
@@ -14,7 +13,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('History'),
+        title: const Text('History'),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed:(){
@@ -22,18 +22,18 @@ class HomeScreen extends StatelessWidget {
                scansProvider.deleteAllScans();
               
             },
-             icon: Icon (Icons.delete_forever))
+             icon: const Icon (Icons.delete_forever))
         ],
       ),
-      body: _homeBody(),
-      bottomNavigationBar: CustomNavigatorBar(),
-      floatingActionButton:ScanButton() ,
+      body: _HomeBody(),
+      bottomNavigationBar: const CustomNavigatorBar(),
+      floatingActionButton:const ScanButton() ,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
 
-class _homeBody extends StatelessWidget {
+class _HomeBody extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
@@ -46,16 +46,16 @@ final scansProvider=Provider.of<ScansProvider>(context,listen: false);
     switch(currentIndex){
       case 0:
       scansProvider.uploadScansByType('geo');
-      return MapsHistoryScreen();
+      return const MapsHistoryScreen();
      
       case 1:
         scansProvider.uploadScansByType('http');
-      return DirectionsScreen();
+      return const DirectionsScreen();
 
 
       
       default:
-      return MapsScreen();
+      return const MapsScreen();
     }
   }
 }

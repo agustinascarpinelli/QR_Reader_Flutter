@@ -19,16 +19,17 @@ class _MapsScreenState extends State<MapsScreen> {
   @override
   Widget build(BuildContext context) {
     final ScanModel scan= ModalRoute.of(context)!.settings.arguments as ScanModel;
+
    final CameraPosition initPoint= CameraPosition(
     target: scan.getLatLng(),
      zoom:17.5);
      
      
      //Marcadores
-  Set <Marker> markers=new Set<Marker>();
-  markers.add(new Marker
+  Set <Marker> markers={};
+  markers.add(Marker
   (
-    markerId: MarkerId('geo-Location'),
+    markerId: const MarkerId('geo-Location'),
     position:scan.getLatLng()
     )
     );
@@ -43,7 +44,7 @@ class _MapsScreenState extends State<MapsScreen> {
             final GoogleMapController controller=await _controller.future;
             controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: scan.getLatLng(),zoom: 17.5,tilt:50)));
           },
-           icon: Icon(Icons.location_disabled))
+           icon: const Icon(Icons.location_disabled))
       ],
     ),
       body: GoogleMap(
@@ -55,7 +56,7 @@ class _MapsScreenState extends State<MapsScreen> {
           },
         ),
         floatingActionButton: FloatingActionButton(
-          elevation: null,
+          
           onPressed:(){
               if (mapType==MapType.normal){
                 mapType=MapType.satellite;
@@ -72,7 +73,7 @@ class _MapsScreenState extends State<MapsScreen> {
               });
               },
           
-          child: Icon(Icons.layers), ),
+          child: const Icon(Icons.layers), ),
         floatingActionButtonLocation:FloatingActionButtonLocation.miniCenterFloat,
    );
   }
